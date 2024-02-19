@@ -1,6 +1,7 @@
 ### Serviços utilizados:
 
 **- Amazon Cloudfront**
+
 **- Amazon S3**
 
 ### Configurações iniciais :
