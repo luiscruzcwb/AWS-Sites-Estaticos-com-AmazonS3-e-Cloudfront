@@ -1,38 +1,68 @@
-### Serviços utilizados
- - Cloudfront
- - S3
- 
-### Configurações iniciais
+### Serviços utilizados:
+
+**- Amazon Cloudfront**
+**- Amazon S3**
+
+### Configurações iniciais :
 
 #### Criando o bucket no S3
-- AWS Console -> S3 -> Create bucket -> Bucket name [nome único] -> AWS Region [padrão] -> Manter configurações de acesso padrão -> Create bucket
-- Acessar o bucket criado -> Upload -> Add files -> Arquivos disponíveis na pasta ```/src``` do repositório -> Upload 
 
-#### COnfigurando o CloudFront
+ 1. Via AWS Console 
+ 2. Acesse AWS **S3** 
+ 3. Create bucket 
+ 4. Bucket name *[nome único]* 
+ 5. AWS Region *[padrão]* 
+ 6. Manter configurações de acesso padrão
+ 7. Create bucket
+ 8. Acessar o bucket criado
+ 9. Upload
+ 10. Add files
 
-- CloudFront Console -> Create distribution -> Origin domain [seu bucket S3 criado anteriormente] -> Yes use OAI (bucket can restrict access to only CloudFront) -> Create new OAI -> Bucket Policy [Yes, update the bucket policy]
-- Viewer protocol policy [Redirect HTTP to HTTPS]
-- Cache key and origin requests -> Cache policy and origin request policy (recommended)
-- Settings [Use all edge locations (best performance)]
-- Create distribution
+#### Configurando o CloudFront  
 
-#### Verificando permissões no S3
+ 1. Via CloudFront Console
+ 2. Create distribution
+ 3. Origin domain [seu bucket S3 criado anteriormente]
+ 4. Yes use OAI (bucket can restrict access to only CloudFront)
+ 5. Origin access 
+ 6. Legacy access identities
+ 7. Create new OAI 
+ 8. Bucket Policy *[Yes, update the bucket policy]*
+ 9. Viewer protocol policy *[Redirect HTTP to HTTPS]*
+ 10. Cache key and origin requests
+ 11. Cache policy and origin request policy (recommended)
+ 12. Settings [Use all edge locations (best performance)]
+ 13. Create distribution  
 
-- S3 Console -> bucket criado anteriormente -> Permissions -> verificar as permissões atualizadas nas políticas de acesso
+#### Verificando as permissões no S3  
 
-#### Acessando pelo browser
-
-https://<meu_dominio>.cloudfront.net/index.html
+ 1. S3 Console
+ 2. Bucket criado anteriormente
+ 3. Permissions
+ 4. Verificar as permissões atualizadas nas políticas de acesso 
 
 #### Configurando a página ```index.html``` como default
 
-- CloudFront Console -> selecionar a distribuição criada -> General -> Settings -> Edit
-- Default root object - optional [index.html]
+ 1. CloudFront Console
+ 2. selecionar a distribuição criada
+ 3. General
+ 4. Settings
+ 5. Edit
+ 6. Default root object - optional *[index.html]*
 
-### Configurações Extras
+#### Acessando pelo browser 
 
-#### Configurando páginas de erro
+https://***distribution domain name***.cloudfront.net
 
-- CloudFront Console -> selecionar a distribuição criada -> Error pages -> Create custom error response
-- HTTP error code [403]
-- Customize error response -> Response page path [/404.html] -> HTTP Response code [404 Not found]
+### Configurações Extras 
+
+#### Configurando páginas de erro  
+
+ 1. CloudFront Console
+ 2. Selecionar a distribuição criada
+ 3. Error pages
+ 4. Create custom error response 
+ 5. HTTP error code *[403 Forbidden]*
+ 6. Customize error response *[Yes]*
+ 7. Response page path *[/404.html]*
+ 8. HTTP Response code *[404: Not found]*
